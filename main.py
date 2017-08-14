@@ -3,16 +3,11 @@ import pprint
 import os
 import psycopg2
 import openpyxl
+from DBConnection import DBConnection
 from dotenv import load_dotenv, find_dotenv
 
 from models.Transaction import Transaction
-load_dotenv(find_dotenv())
-# Set up database in env file
-host = os.environ.get("host")
-dname = os.environ.get("dname")
-user = os.environ.get("user")
-password = os.environ.get("password")
-conn = psycopg2.connect("host=" + host +" dbname=" + dname + " user=" + user + " password=" + password)
+conn = DBConnection().get_connection()
 
 
 pp = pprint.PrettyPrinter(indent=4)
