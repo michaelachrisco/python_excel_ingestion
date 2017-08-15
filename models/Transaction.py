@@ -17,10 +17,10 @@ class Transaction:
     def get_running_total(self):
         return self.running_total
 
-    def save(self,conn):
+    def save(self, conn):
         cur = conn.cursor()
         cur.execute("INSERT INTO transactions (transaction_date, amount, description, running_total) VALUES (%s, %s, %s, %s)",
-                    (self.transaction_date, self.amount * 1.00, self.description, self.running_total))
+                    (self.transaction_date, self.amount, self.description, self.running_total))
         conn.commit()
         cur.close()
 
